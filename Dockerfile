@@ -2,7 +2,6 @@
 FROM python:3.9-slim
 
 # Définition du répertoire de travail à /app
-WORKDIR /app
 
 # Copie le fichier des dépendances dans le répertoire de travail
 COPY requirements.txt .
@@ -18,7 +17,7 @@ COPY . .
 EXPOSE 8000
 
 # Définition de la variable d'environnement pour l'URL de la base de données
-ENV DATABASE_URL=mysql+pymysql://talib:talibPass@localhost:3307/items
+ENV DATABASE_URL=mysql+pymysql://root:@localhost:3307/items
 
 # Définition du répertoire de travail et exécution de la commande pour démarrer l'application web
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
